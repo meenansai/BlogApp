@@ -51,9 +51,10 @@ public class HomeScreenActivity extends AppCompatActivity {
         JsonArrayRequest arrayRequest = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                List<Article> templist = new ArrayList<>();
                 Log.d(TAG, "onResponse: Started");
                 JSONObject jsonObject = null;
-
+                Log.d(TAG, "onResponse: "+ response.length());
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         jsonObject = response.getJSONObject(i);
@@ -69,7 +70,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                         Log.d(TAG, "onResponse: Article Img Url:" +jsonObject.getString("img"));
                         Log.d(TAG, "onResponse: Article author:" +jsonObject.getString("author"));
 
-                        lstArticle.add(article);
+                        templist.add(article);
+                        lstArticle = templist;
                     } catch (JSONException e) {
                         Log.d(TAG, "onResponse: JSONException Raised: " +e.toString());
                         e.printStackTrace();

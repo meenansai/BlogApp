@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.blogapp.Activity.ArticleDetailPage;
 import com.example.blogapp.Activity.HomeScreenActivity;
 import com.example.blogapp.Model.Article;
 import com.example.blogapp.R;
@@ -38,7 +39,7 @@ public class ArticleRecyclerView extends RecyclerView.Adapter<ArticleRecyclerVie
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, final int viewType) {
         Log.d(TAG, "onCreateViewHolder: Started");
         View view;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
@@ -47,7 +48,14 @@ public class ArticleRecyclerView extends RecyclerView.Adapter<ArticleRecyclerVie
         viewHolder.view_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(mContext, ArticleDetailPage.class);
+                i.putExtra("title", mData.get(viewHolder.getAdapterPosition()).getTitle());
+                i.putExtra("subtitle", mData.get(viewHolder.getAdapterPosition()).getSubTitle());
+                i.putExtra("img", mData.get(viewHolder.getAdapterPosition()).getImgUrl());
+                i.putExtra("videoUrl", mData.get(viewHolder.getAdapterPosition()).getVideoUrl());
+                i.putExtra("author", mData.get(viewHolder.getAdapterPosition()).getAuthor());
+                i.putExtra("article_data", mData.get(viewHolder.getAdapterPosition()).getArticleData());
+                mContext.startActivity(i);
             }
         });
         return viewHolder;
