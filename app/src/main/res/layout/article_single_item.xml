@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:padding="10dp"
+    android:id="@+id/articleSingleItem">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/article_single_item_background"
+        android:weightSum="100">
+
+        <ImageView
+            android:id="@+id/articleSingleItemmage"
+            android:layout_width="0dp"
+            android:background="@drawable/article_image_loading_background"
+            android:layout_weight="25"
+            android:layout_height="match_parent"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="73"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/articleSingleItemTitle"
+                android:layout_width="match_parent"
+                android:textStyle="bold"
+                android:textColor="@color/primaryTextColor"
+                android:text="@string/sample_title"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/articleSingleItemSubTitle"
+                android:layout_width="match_parent"
+                android:text="@string/sample_subtitle"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
