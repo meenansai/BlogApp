@@ -8,19 +8,28 @@ public class Article {
     private String imgUrl;
     private String videoUrl;
     private String articleData;
-
+    private boolean isFav;
     //Empty Constructors
     public Article() {
     }
 
     //Constructor with arguments
-    public Article(String title, String subTitle, String author, String imgUrl, String videoUrl, String articleData) {
+    public Article(String title, String subTitle, String author, String imgUrl, String videoUrl, String articleData,boolean isFav) {
         this.title = title;
         this.subTitle = subTitle;
         this.author = author;
         this.imgUrl = imgUrl;
         this.videoUrl = videoUrl;
         this.articleData = articleData;
+        this.isFav = isFav;
+    }
+
+    public boolean isFav() {
+        return isFav;
+    }
+
+    public void setFav(boolean fav) {
+        isFav = fav;
     }
 
     //Getters and Setters

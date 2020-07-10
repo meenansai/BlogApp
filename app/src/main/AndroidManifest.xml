@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.HomeScreenActivity"/>
+        <activity android:name=".Activity.ArticleDetailPage"/>
     </application>
 
 </manifest>
