@@ -1,9 +1,11 @@
-package com.example.blogapp;
+package com.example.blogapp.Activity;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.blogapp.R;
 
 public class HomeScreenActivity extends AppCompatActivity {
     private static final String TAG = "HomeScreenActivity";
