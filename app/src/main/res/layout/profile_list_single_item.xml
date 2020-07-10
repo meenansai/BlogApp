@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal"
+    android:weightSum="100">
+
+    <view
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"/>
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="0dp"
+        android:src="@drawable/ic_baseline_person_24"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="10"/>
+    <view
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_weight="80">
+
+        <TextView
+            android:id="@+id/profileName"
+            android:layout_width="match_parent"
+            android:text="@string/name"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/profileSubName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="@string/rakesh_sirikonda"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

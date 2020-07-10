@@ -9,4 +9,8 @@
         android:title="@string/favourites"
         android:icon="@drawable/ic_favorite_24dp"/>
 
+    <item android:id="@+id/nav_profile"
+        android:title="@string/profile"
+        android:icon="@drawable/ic_baseline_person_24"/>
+
 </menu>
