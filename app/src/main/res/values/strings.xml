@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BlogApp</string>
+    <string name="sample_title">How to Exexute C Program</string>
+    <string name="sample_subtitle">sample subtitle</string>
 </resources>
