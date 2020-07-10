@@ -8,10 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.blogapp.R;
 
 public class HomeScreenActivity extends AppCompatActivity {
-    private static final String TAG = "HomeScreenActivity";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_screen_layout);
+        setContentView(R.layout.activity_home_screen);
     }
 }

@@ -17,15 +17,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button loginBtn = (Button) findViewById(R.id.main_activity_loginBtn);
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: Login Button Clicked");
-                Intent intent = new Intent(MainActivity.this, HomeScreenActivity.class);
-                startActivity(intent);
-                
-            }
-        });
     }
 }
