@@ -12,10 +12,18 @@ import com.example.blogapp.R;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    Button b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        b = findViewById(R.id.btn);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, HomeScreenActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
