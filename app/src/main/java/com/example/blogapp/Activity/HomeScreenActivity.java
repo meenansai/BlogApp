@@ -1,11 +1,16 @@
 package com.example.blogapp.Activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,8 +21,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.blogapp.Adapter.ArticleRecyclerView;
+import com.example.blogapp.Fragment.FavoritesFragment;
+import com.example.blogapp.Fragment.HomeFragment;
 import com.example.blogapp.Model.Article;
 import com.example.blogapp.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,75 +36,48 @@ import java.util.List;
 
 public class HomeScreenActivity extends AppCompatActivity {
     private static final String TAG = "HomeScreenActivity";
-    private List<Article> lstArticle = new ArrayList<>();
-    private RecyclerView myRecyclerView;
+
+    // Initializing all Fragments
+    final Fragment fragment1 = new HomeFragment();
+    final Fragment fragment2 = new FavoritesFragment();
+
+    final FragmentManager fm = getSupportFragmentManager();
+    Fragment active = fragment1;
+
+    private Context context = HomeScreenActivity.this;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        myRecyclerView = findViewById(R.id.articleRecyclerView);
-        jsonCall();
-        setRecyclerViewAdapter(lstArticle);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        fm.beginTransaction().add(R.id.mainFrameLayout, fragment2, "2").hide(fragment2).commit();
+        fm.beginTransaction().add(R.id.mainFrameLayout, fragment1, "1").commit();
     }
 
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-    /*
-     * Method for JsonCallRequest
-     */
-    public void jsonCall(){
-        Log.d(TAG, "jsonCall: Method Called");
-        String JSON_URL = "https://raw.githubusercontent.com/RakeshSirikonda/json1/master/blogapp_article_dummy_data.json";
-        JsonArrayRequest arrayRequest = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                Log.d(TAG, "onResponse: Started");
-                JSONObject jsonObject = null;
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.nav_articles:
+                    fm.beginTransaction().hide(active).show(fragment1).commit();
+//                    getSupportActionBar().setTitle("Vineyard Ministries");
+                    active = fragment1;
+                    return true;
 
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        Article article = new Article();
-                        article.setTitle(jsonObject.getString("title"));
-                        article.setSubTitle(jsonObject.getString("subtitle"));
-                        article.setAuthor(jsonObject.getString("author"));
-                        article.setImgUrl(jsonObject.getString("img"));
-                        article.setVideoUrl(jsonObject.getString("videoUrl"));
-                        article.setArticleData(jsonObject.getString("article_data"));
-
-                        Log.d(TAG, "onResponse: Article Name:" +jsonObject.getString("title"));
-                        Log.d(TAG, "onResponse: Article Img Url:" +jsonObject.getString("img"));
-                        Log.d(TAG, "onResponse: Article author:" +jsonObject.getString("author"));
-
-                        lstArticle.add(article);
-                    } catch (JSONException e) {
-                        Log.d(TAG, "onResponse: JSONException Raised: " +e.toString());
-                        e.printStackTrace();
-                    }
-                }
-                // Toast.makeText(getContext(), "Loaded Articles: " + lstArticle.size(), Toast.LENGTH_SHORT).show();
-
-                setRecyclerViewAdapter(lstArticle);
+                case R.id.nav_favorites:
+                    fm.beginTransaction().hide(active).show(fragment2).commit();
+//                    getSupportActionBar().setTitle("Songs");
+                    active = fragment2;
+                    return true;
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(arrayRequest);
-    }
-
-    /*
-    * Method for RecyclerViewAdapter (Attaching adapter to RecyclerView)
-     */
-    private void setRecyclerViewAdapter(final List<Article> lstArticle) {
-        final ArticleRecyclerView myAdapter = new ArticleRecyclerView(this,lstArticle);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        myRecyclerView.setLayoutManager(linearLayoutManager);
-        myRecyclerView.setAdapter(myAdapter);
-        myRecyclerView.addItemDecoration(new DividerItemDecoration(this, linearLayoutManager.getOrientation()));
-    }
-
+            return false;
+        }
+    };
 }

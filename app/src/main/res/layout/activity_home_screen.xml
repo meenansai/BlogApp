@@ -36,27 +36,19 @@
     </RelativeLayout>
 
 
-    <!-- ListView-->
-    <RelativeLayout
-        android:id="@+id/homeListView"
+    <!-- Body Section-->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/homeAppBar"
+        android:layout_height="match_parent"
         android:layout_above="@id/homeBtmNavBar"
-        >
+        android:layout_below="@id/homeAppBar"
+        android:id="@+id/mainFrameLayout">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/articleRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/article_single_item">
 
-        </androidx.recyclerview.widget.RecyclerView>
-    </RelativeLayout>
+    </FrameLayout>
 
 
     <!--Bottom Navigationbar -->
-<!--        <include layout="@layout/bottom_navigation_bar"/>-->
         <RelativeLayout
             android:id="@+id/homeBtmNavBar"
             android:layout_width="match_parent"
