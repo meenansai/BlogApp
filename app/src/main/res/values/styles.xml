@@ -27,4 +27,12 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+
+    <!-- FlatButton Decoration -->
+    <style name="PrimaryFlatButton" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
 </resources>

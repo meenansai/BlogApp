@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/authCard"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:layout_alignParentBottom="true"
         android:padding="30dp"
         app:cardCornerRadius="20dp"
@@ -44,7 +44,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/authEmailInp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -72,7 +73,15 @@
                 android:id="@+id/main_activity_loginBtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Login" />
+                android:text="@string/login" />
+
+            <Button
+                android:id="@+id/main_activity_signUpBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/create_new_account"
+                style="@style/Widget.MaterialComponents.Button.TextButton" />
 
         </LinearLayout>
 

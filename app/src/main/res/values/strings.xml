@@ -11,12 +11,12 @@
     <string name="favourites">Favorites</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-<<<<<<< HEAD
     <string name="profile">Profile</string>
     <string name="name">Name</string>
     <string name="rakesh_sirikonda">Rakesh Sirikonda</string>
-=======
     <string name="title">Title</string>
->>>>>>> 2bb2485043fc7cfae81c125030917d4a1b153e72
+
+    <string name="login">Login</string>
+    <string name="create_new_account">Create new account</string>
 
 </resources>
